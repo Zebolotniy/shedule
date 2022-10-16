@@ -647,7 +647,7 @@
         </div>
         <div class="shedule-footer">
           <a href="https://www.mirea.ru/schedule/"><div class="ticket-barcode" id="barcode"></div></a>
-          <div class="ticket-code" id="ticket-code"></div>
+          <a href="https://www.mirea.ru/schedule/"><div class="ticket-code" id="ticket-code"></div></a>
         </div>
         </div>
       </div>
@@ -666,17 +666,12 @@
     let finish = new Date(a.getFullYear(), a.getMonth(), a.getDate()+7-d);
     date.innerHTML = week + " неделя  " + start.getDate() + "." + (start.getMonth() + 1) + "." + start.getFullYear() +
     "-" + finish.getDate() + "." + (finish.getMonth() + 1) + "." + finish.getFullYear();
-    function f (c){
-      console.log(Math.floor(c));
-      console.log((a.getTime()-b.getTime())/1000/3600/24/7);
-    }
     let days = document.getElementsByClassName("shedule-day");
     let dayshedule = document.getElementsByClassName("shedule-list");
     
     for(let i = 0; i< days.length; i++)
     {
       days[i].addEventListener("click", function(){
-        console.log(dayshedule[i].className);
         if(dayshedule[i].style.display == "block"){
           dayshedule[i].style.display = "none";
         }
