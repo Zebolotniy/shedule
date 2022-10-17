@@ -1,9 +1,23 @@
 <!doctype html>
 <html lang="ru">
 <head>
+  <link rel="apple-touch-icon" sizes="72x72" href="img/apple-icon-72x72.png">
+  <link rel="icon" type="image/png" sizes="192x192"  href="img/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="img/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
+  <link rel="manifest" href="/manifest.json">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="application-name" content="Расписание">
+  <meta name="apple-mobile-web-app-title" content="Расписание">
+  <meta name="msapplication-starturl" content="/">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="img/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Расписание РТУ МИРЭА</title>
+  <title>Неизвестно</title>
   <link rel="stylesheet" href="shedule.css" />
 </head>
 <body>
@@ -647,7 +661,7 @@
         </div>
         <div class="shedule-footer">
           <a href="https://www.mirea.ru/schedule/"><div class="ticket-barcode" id="barcode"></div></a>
-          <a href="https://www.mirea.ru/schedule/"><div class="ticket-code" id="ticket-code"></div></a>
+          <div class="ticket-code" id="ticket-code"></div>
         </div>
         </div>
       </div>
@@ -666,12 +680,17 @@
     let finish = new Date(a.getFullYear(), a.getMonth(), a.getDate()+7-d);
     date.innerHTML = week + " неделя  " + start.getDate() + "." + (start.getMonth() + 1) + "." + start.getFullYear() +
     "-" + finish.getDate() + "." + (finish.getMonth() + 1) + "." + finish.getFullYear();
+    function f (c){
+      console.log(Math.floor(c));
+      console.log((a.getTime()-b.getTime())/1000/3600/24/7);
+    }
     let days = document.getElementsByClassName("shedule-day");
     let dayshedule = document.getElementsByClassName("shedule-list");
     
     for(let i = 0; i< days.length; i++)
     {
       days[i].addEventListener("click", function(){
+        console.log(dayshedule[i].className);
         if(dayshedule[i].style.display == "block"){
           dayshedule[i].style.display = "none";
         }
