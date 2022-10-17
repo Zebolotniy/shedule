@@ -2,7 +2,7 @@
     "name": "Расписание",
     "short_name": "Расписание",
     "lang": "ru",
-    "start_url": "/",
+    "start_url": "/shedule",
     "display": "standalone",
     "theme_color": "#FFFFFF",
     "background_color": "#FFFFFF",
