@@ -682,17 +682,15 @@
     let finish = new Date(a.getFullYear(), a.getMonth(), a.getDate()+7-d);
     date.innerHTML = week + " неделя  " + start.getDate() + "." + (start.getMonth() + 1) + "." + start.getFullYear() +
     "-" + finish.getDate() + "." + (finish.getMonth() + 1) + "." + finish.getFullYear();
-    function f (c){
-      console.log(Math.floor(c));
-      console.log((a.getTime()-b.getTime())/1000/3600/24/7);
-    }
-    let days = document.getElementsByClassName("shedule-day");
-    let dayshedule = document.getElementsByClassName("shedule-list");
-    
+    window.addEventListener("load", setDays);
+    let days;
+    let dayshedule;
+    function setDays(){
+    days = document.getElementsByClassName("shedule-day");
+    dayshedule = document.getElementsByClassName("shedule-list");
     for(let i = 0; i< days.length; i++)
     {
       days[i].addEventListener("click", function(){
-        console.log(dayshedule[i].className);
         if(dayshedule[i].style.display == "block"){
           dayshedule[i].style.display = "none";
         }
@@ -702,13 +700,46 @@
         }
       });
     }
-    function open_day(){
-      if(d != 7){
-        dayshedule[d-1].style.display = "block";
-        location.href = "#" + d_names[d - 1];
-      }
-    }
     setTimeout(open_day, 200);
+    }
+    function open_day(){
+      let k = d-1;
+      let p = 0;
+      if(d == 7){
+        dayshedule[0].style.display = "block";
+        location.href = "#" + d_names[0];
+        return;
+      }
+      let classes = dayshedule[k].getElementsByClassName("shedule-value");
+      for (let j = 0; j < classes.length; j++){
+        if(classes[j].getElementsByTagName("div").length == 12)
+        {
+          if (classes[j].getElementsByTagName("div")[4].innerHTML == "-"){
+            if (j == 0){
+              k = d;
+              break;
+            }
+            else{
+              let fin_h = classes[j-1].getElementsByTagName("div")[1].innerHTML;
+              fin_h = fin_h.slice(fin_h.indexOf("-")+1);
+            let fin_m = fin_h.slice(fin_h.indexOf(":")+1);
+            fin_h = fin_h.slice(0,fin_h.indexOf(":"));
+            if(new Date().getHours > fin_h | (new Date().getMinutes > fin_m & new Date().getHours == fin_h)){
+              k = d;
+              break;
+            }
+            else{
+              k = d-1;
+              break;
+            }
+            }
+            break;
+          }
+        }
+      }
+      dayshedule[k].style.display = "block";
+      location.href = "#" + d_names[k];
+    }
     document.getElementById("ticket-code").innerHTML="mirea.ru/schedule";
     for (let i = 0; i<80; i++){
       let bc = document.createElement("div");
