@@ -711,31 +711,18 @@
         return;
       }
       let classes = dayshedule[k].getElementsByClassName("shedule-value");
-      for (let j = 0; j < classes.length; j++){
-        if(classes[j].getElementsByTagName("div").length == 12)
-        {
-          if (classes[j].getElementsByTagName("div")[4].innerHTML == "-"){
-            if (j == 0){
-              k = d;
-              break;
-            }
-            else{
-              let fin_h = classes[j-1].getElementsByTagName("div")[1].innerHTML;
-              fin_h = fin_h.slice(fin_h.indexOf("-")+1);
-            let fin_m = fin_h.slice(fin_h.indexOf(":")+1);
-            fin_h = fin_h.slice(0,fin_h.indexOf(":"));
-            if(new Date().getHours > fin_h | (new Date().getMinutes > fin_m & new Date().getHours == fin_h)){
-              k = d;
-              break;
-            }
-            else{
-              k = d-1;
-              break;
-            }
-            }
-            break;
-          }
-        }
+      let fin_h = classes[classes.length-1].getElementsByTagName("div")[1].innerHTML;
+      fin_h = fin_h.slice(fin_h.indexOf("-")+1);
+      let fin_m = fin_h.slice(fin_h.indexOf(":")+1);
+      fin_h = fin_h.slice(0,fin_h.indexOf(":"));
+      console.log(fin_h + "-" + fin_m);
+      if(new Date().getHours > fin_h || (new Date().getMinutes > fin_m && new Date().getHours == fin_h)){
+        k = d;
+        if(k > 5){k =0;}
+        console.log(k);
+      }
+      else{
+        k = d-1;
       }
       dayshedule[k].style.display = "block";
       location.href = "#" + d_names[k];
