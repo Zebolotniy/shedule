@@ -716,7 +716,8 @@
       let fin_m = fin_h.slice(fin_h.indexOf(":")+1);
       fin_h = fin_h.slice(0,fin_h.indexOf(":"));
       console.log(fin_h + "-" + fin_m);
-      if(new Date().getHours > fin_h || (new Date().getMinutes > fin_m && new Date().getHours == fin_h)){
+      c_d = new Date();
+      if(c_d.getHours() > fin_h || (c_d.getMinutes() > fin_m && c_d.getHours() == fin_h)){
         k = d;
         if(k > 5){k =0;}
         console.log(k);
