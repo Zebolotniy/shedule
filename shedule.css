@@ -103,6 +103,19 @@
     height: 90px;
     margin: 0px 20px 0px 20px;
     display: grid;
+    grid-template-columns: 7fr 5fr 3fr 20fr 10fr 5fr;
+    grid-column-gap: 4px;
+    align-items: center;
+    text-align: center;
+    border-bottom: 2px solid #d1c9cc;
+    font-weight: 500;
+    font-size: 14px;
+    color: #4F182C73;
+}
+.shedule-value-basic{
+    height: 90px;
+    margin: 0px 20px 0px 20px;
+    display: grid;
     grid-template-columns: 5fr 12fr 5fr 4fr 70fr 20fr 14fr;
     grid-column-gap: 4px;
     align-items: center;
