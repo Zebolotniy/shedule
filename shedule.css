@@ -99,7 +99,7 @@
 .shedule-list{
     margin: 0px;
 }
-.shedule-value{
+.shedule-value-exams{
     height: 90px;
     margin: 0px 20px 0px 20px;
     display: grid;
@@ -112,7 +112,7 @@
     font-size: 14px;
     color: #4F182C73;
 }
-.shedule-value-basic{
+.shedule-value{
     height: 90px;
     margin: 0px 20px 0px 20px;
     display: grid;
