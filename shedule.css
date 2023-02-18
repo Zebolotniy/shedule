@@ -20,12 +20,14 @@
     top:0;
 }
 .head{
-    padding: 10px 80px 10px 80px;
+    margin: 10px auto 10px auto;
+    padding: 0px 60px;
     display: grid;
     grid-template-columns: 1fr 9fr 1fr;
     font-size: 18px;
     align-items: center;
     color: #fff;
+    max-width: 800px;
 }
 .head-menu{
     display: grid;
@@ -45,7 +47,9 @@
     text-align: center;
 }
 .shedule{
-    margin: 0px 60px 80px 60px
+    margin: 0px auto 80px auto;
+    padding: 0px 60px;
+    max-width: 800px;
 }
 .shedule-head{
     height: 75px;
@@ -141,10 +145,10 @@
 @media (max-width: 600px){
   .head{
     font-size: 12px;
-    padding: 10px 5% 10px 5%;
+    padding: 0px 5%;
   }
   .shedule{
-    margin: 0px 5% 80px 5%;
+    padding: 0px 5%;
   }
   .shedule-head{
     font-size: 10px;
