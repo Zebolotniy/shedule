@@ -1,9 +1,9 @@
 @font-face {
-	font-family: 'GothamPro'; 
-	src: url(fonts/GothamPro.14d5b651.ttf); 
+    font-family: 'GothamPro'; 
+    src: url(fonts/GothamPro.14d5b651.ttf); 
 }
 *{
-	font-family: "GothamPro";
+    font-family: "GothamPro";
 }
 input:focus-visible {
     outline: none;
@@ -23,6 +23,7 @@ input:focus-visible {
     top:0;
 }
 .head{
+    -webkit-user-select: none;
     user-select: none;
     margin: 10px auto 10px auto;
     padding: 0px 60px;
@@ -74,7 +75,6 @@ input:focus-visible {
     background:#ffb200;
 	box-shadow:0 1.11vh 2.04vh #fdb10114;
 	color:#3f1523;
-    /* border-radius: 10px; */
 	transition-duration:.2s
 }
 .head-title{
@@ -100,7 +100,6 @@ input:focus-visible {
 }
 .shedule-footer{
     height: 75px; 
-    /* border-radius: 0px 0px 50px 50px;  */
     background-color: #fff;
 }
 .arrow_a{
@@ -136,6 +135,19 @@ input:focus-visible {
 }
 .shedule-list{
     transition: .25s;
+}
+.shedule-value-exams{
+    height: 90px;
+    margin: 0px 20px 0px 20px;
+    display: grid;
+    grid-template-columns: 7fr 5fr 3fr 20fr 10fr 5fr;
+    grid-column-gap: 4px;
+    align-items: center;
+    text-align: center;
+    border-bottom: 2px solid #d1c9cc;
+    font-weight: 500;
+    font-size: 14px;
+    color: #4F182C73;
 }
 .shedule-value{
     height: 90px;
@@ -199,14 +211,10 @@ input:focus-visible {
     padding: 0px;
     margin: 0px;
     background-color: #fff0;
-    /* background-image: url("img/close.png");
-    background-size: contain; */
+    background-image: url("img/close.png");
+    background-size: cover;
 }
-.ext-container-close img{
-    height: 5vw;
-    width: 5vw;
-}
-.ext-container-close img:hover{
+.ext-container-close:hover{
     right: 0.5vw;
     top: 0.5vw;
     height: 6vw;

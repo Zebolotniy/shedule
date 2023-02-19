@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="ru">
 <head>
+  <meta charset="utf-8" />
   <!-- <link rel="apple-touch-icon" sizes="57x57" href="img/apple-icon-57x57.png">
   <link rel="apple-touch-icon" sizes="60x60" href="img/apple-icon-60x60.png">
   <link rel="apple-touch-icon" sizes="72x72" href="img/apple-icon-72x72.png">
@@ -23,7 +24,6 @@
   <meta name="msapplication-TileColor" content="#ffffff">
   <meta name="msapplication-TileImage" content="img/ms-icon-144x144.png">
   <meta name="theme-color" content="#ffffff"> -->
-  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Расписание РТУ МИРЭА</title>
   <link rel="stylesheet" href="shedule.css" />
@@ -33,22 +33,22 @@
     <div class="shedule-bg">
       <div class="head">
         <div class="head-menu">
-          <form class="head-menu-title" id="menu">
-            <img src="img/Group 5.png" style="scale: .7;">
+          <div class="head-menu-title" id="menu">
+            <img src="img/Group 5.png" alt="menu" style="scale: .7;">
             <div>Меню</div>
-          </form>
-          <form class="head-menu-list" id="menu-list">
-            <button class="list-item" id="op-chsum" onclick="class_menu.openChsum()">checksum</button>
-          </form>
+          </div>
+          <div class="head-menu-list" id="menu-list">
+            <button class="list-item" type="button" id="op-chsum" onclick="class_menu.openChsum()">checksum</button>
+          </div>
         </div>
         <div class="head-title">Расписание РТУ МИРЭА группа КББО-01-20</div>
         <div></div>
       </div>
       <div class="shedule">
         <div class="shedule-head">
-          <div class="arrow_a"><img src="img/Arrow 2.png"></div>
+          <div class="arrow_a"><img alt="left" src="img/Arrow 2.png"></div>
           <div id="date">1 неделя 11.11.2022-22.12.2022</div>
-          <div class="arrow_b"><img src="img/Arrow 2.png"></div>
+          <div class="arrow_b"><img alt="right" src="img/Arrow 2.png"></div>
         </div>
         <div class="shedule-table">
           <div id="monday">
@@ -673,7 +673,7 @@
           </div>
         </div>
         <div class="shedule-footer">
-          <a href="https://www.mirea.ru/schedule/"><div class="ticket-barcode" id="barcode"></div></a>
+          <a href="https://www.mirea.ru/schedule/" title="Расписание РТУ МИРЭА"><div class="ticket-barcode" id="barcode"></div></a>
           <div class="ticket-code" id="ticket-code"></div>
         </div>
         </div>
@@ -681,31 +681,30 @@
     </div>
   </div>
   <div class="ext-container" id="ext-cont" style="display: none;">
-    <button class="ext-container-close" id="ext-close">
-      <img src="img/close.png">
+    <button class="ext-container-close" type="button" id="ext-close">
     </button>
     <div class="chsum">
       <div class="chsum-content">
         <div class="chsum-data">
-          <input type="text" id="chs-dec" class="chsum-data-val" value="">
+          <input type="text" id="chs-dec" name="chs-dec" class="chsum-data-val" value="">
           <div class="chsum-data-text">Decimal</div>
         </div>
         <div class="chsum-data">
-          <input type="text" id="chs-hex" class="chsum-data-val" value="">
+          <input type="text" id="chs-hex" name="chs-hex" class="chsum-data-val" value="">
           <div class="chsum-data-text">Hex</div>
         </div>
-        <button class="chsum-button" onclick="checksum.dechex()">Конвертировать</button>
+        <button class="chsum-button" type="button" onclick="checksum.dechex()">Конвертировать</button>
       </div>
       <div class="chsum-content">
         <div class="chsum-data">
-          <input type="text" id="chs-val" class="chsum-data-val" value="">
+          <input type="text" id="chs-val" name="chs-val" class="chsum-data-val" value="">
           <div class="chsum-data-text">Value</div>
         </div>
         <div class="chsum-data">
-          <input type="text" id="chs-sum" class="chsum-data-val" value="">
+          <input type="text" id="chs-sum" name="chs-sum" class="chsum-data-val" value="">
           <div class="chsum-data-text">Checksum</div>
         </div>
-        <button class="chsum-button" onclick="checksum.calcsum()">Вычислить контрольную сумму</button>
+        <button class="chsum-button" type="button" onclick="checksum.calcsum()">Вычислить контрольную сумму</button>
       </div>
     </div>
   </div>
