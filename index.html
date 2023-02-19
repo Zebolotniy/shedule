@@ -33,8 +33,13 @@
     <div class="shedule-bg">
       <div class="head">
         <div class="head-menu">
-          <img src="img/Group 5.png" style="scale: .7;">
-          <div>Меню</div>
+          <form class="head-menu-title" id="menu">
+            <img src="img/Group 5.png" style="scale: .7;">
+            <div>Меню</div>
+          </form>
+          <form class="head-menu-list" id="menu-list">
+            <button class="list-item" id="op-chsum" onclick="class_menu.openChsum()">checksum</button>
+          </form>
         </div>
         <div class="head-title">Расписание РТУ МИРЭА группа КББО-01-20</div>
         <div></div>
@@ -675,80 +680,250 @@
       </div>
     </div>
   </div>
+  <div class="ext-container" id="ext-cont" style="display: none;">
+    <button class="ext-container-close" id="ext-close">
+      <img src="img/close.png">
+    </button>
+    <div class="chsum">
+      <div class="chsum-content">
+        <div class="chsum-data">
+          <input type="text" id="chs-dec" class="chsum-data-val" value="">
+          <div class="chsum-data-text">Decimal</div>
+        </div>
+        <div class="chsum-data">
+          <input type="text" id="chs-hex" class="chsum-data-val" value="">
+          <div class="chsum-data-text">Hex</div>
+        </div>
+        <button class="chsum-button" onclick="checksum.dechex()">Конвертировать</button>
+      </div>
+      <div class="chsum-content">
+        <div class="chsum-data">
+          <input type="text" id="chs-val" class="chsum-data-val" value="">
+          <div class="chsum-data-text">Value</div>
+        </div>
+        <div class="chsum-data">
+          <input type="text" id="chs-sum" class="chsum-data-val" value="">
+          <div class="chsum-data-text">Checksum</div>
+        </div>
+        <button class="chsum-button" onclick="checksum.calcsum()">Вычислить контрольную сумму</button>
+      </div>
+    </div>
+  </div>
   <script>
-    let a = new Date();
-    a = new Date(a.getFullYear(), a.getMonth(), a.getDate());
-    let b = new Date(2023, 1, 5);
-    let week = Math.ceil((a.getTime()-b.getTime())/1000/3600/24/7);
-    let d = 0;
-    let d_names = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday"];
-    if(a.getDay() == 0){ d = 7; }
-    else{ d = a.getDay(); }
-    let start = new Date(a.getFullYear(), a.getMonth(), a.getDate()-d+1);
-    let finish = new Date(a.getFullYear(), a.getMonth(), a.getDate()+7-d);
-    function setWeek(start, finish)
-    {
-      date.innerHTML = week + " неделя  " + start.getDate() + "." + (start.getMonth() + 1) + "." + start.getFullYear() +
-      "-" + finish.getDate() + "." + (finish.getMonth() + 1) + "." + finish.getFullYear();
-    }
-    if(1)
-    {
-      setWeek(start, finish);
-    }
-    window.addEventListener("load", setDays);
-    let days;
-    let dayshedule;
-    function setDays(){
-    days = document.getElementsByClassName("shedule-day");
-    dayshedule = document.getElementsByClassName("shedule-list");
-    for(let i = 0; i< days.length; i++)
-    {
-      days[i].addEventListener("click", function(){
-        if(dayshedule[i].style.display == "block"){
-          dayshedule[i].style.display = "none";
+    var shedule = {
+      a : new Date(),
+      b : new Date(2022, 7, 28),
+      week : 0,
+      d : 0,
+      d_names : ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday"],
+      start : new Date(),
+      finish : new Date(),
+      setup : function(){
+        shedule.a = new Date();
+        shedule.a = new Date(shedule.a.getFullYear(), shedule.a.getMonth(), shedule.a.getDate());
+        shedule.week = Math.ceil((shedule.a.getTime()-shedule.b.getTime())/1000/3600/24/7);
+        if(shedule.a.getDay() == 0){ shedule.d = 7; }
+        else{ shedule.d = shedule.a.getDay(); }
+        shedule.start = new Date(shedule.a.getFullYear(), 
+        shedule.a.getMonth(), shedule.a.getDate()-shedule.d+1);
+        shedule.finish = new Date(shedule.a.getFullYear(), 
+        shedule.a.getMonth(), shedule.a.getDate()+7-shedule.d);
+        shedule.setWeek(shedule.start, shedule.finish);
+      },
+      setWeek : function(start, finish){
+        date.innerHTML = shedule.week + " неделя  " + 
+        shedule.start.getDate() + "." + (shedule.start.getMonth() + 1) + 
+        "." + shedule.start.getFullYear() +
+        "-" + shedule.finish.getDate() + "." + 
+        (shedule.finish.getMonth() + 1) + "." + 
+        shedule.finish.getFullYear();
+      },
+      openDay : function(days, dayshedule){
+        let k = shedule.d - 1;
+        let p = 0;
+        if(shedule.d == 7){
+          dayshedule[0].style.display = "block";
+          location.href = "#" + shedule.d_names[0];
+          return;
+        }
+        let classes = dayshedule[k].getElementsByClassName("shedule-value");
+        let fin_h = classes[classes.length-1].getElementsByTagName("div")[1].innerHTML;
+        fin_h = fin_h.slice(fin_h.indexOf("-")+1);
+        let fin_m = fin_h.slice(fin_h.indexOf(":")+1);
+        fin_h = fin_h.slice(0,fin_h.indexOf(":"));
+        console.log(fin_h + "-" + fin_m);
+        let c_d = new Date();
+        if(c_d.getHours() > fin_h || (c_d.getMinutes() > fin_m && c_d.getHours() == fin_h)){
+          k = shedule.d;
+          if(k > 5){k = 0;}
+          console.log(k + " ," + c_d.getHours() + ":" + c_d.getMinutes());
         }
         else{
-          dayshedule[i].style.display = "block";
-          location.href = "#" + d_names[i];
+          k = shedule.d-1;
         }
-      });
-    }
-    if(1)
-    {
-      setTimeout(open_day, 200);
-    }
-    }
-    function open_day(){
-      let k = d-1;
-      let p = 0;
-      if(d == 7){
-        dayshedule[0].style.display = "block";
-        location.href = "#" + d_names[0];
-        return;
+        dayshedule[k].style.display = "block";
+        location.href = "#" + shedule.d_names[k];
+      },
+      setDays : function(){
+        shedule.setup();
+        let days = document.getElementsByClassName("shedule-day");
+        let dayshedule = document.getElementsByClassName("shedule-list");
+        for(let i = 0; i< days.length; i++)
+        {
+          days[i].addEventListener("click", function(){
+            if(dayshedule[i].style.display == "block"){
+              dayshedule[i].style.display = "none";
+            }
+            else{
+              dayshedule[i].style.display = "block";
+              location.href = "#" + shedule.d_names[i];
+            }
+          });
+        }
+        setTimeout(shedule.openDay, 200, days, dayshedule);
       }
-      let classes = dayshedule[k].getElementsByClassName("shedule-value");
-      let fin_h = classes[classes.length-1].getElementsByTagName("div")[1].innerHTML;
-      fin_h = fin_h.slice(fin_h.indexOf("-")+1);
-      let fin_m = fin_h.slice(fin_h.indexOf(":")+1);
-      fin_h = fin_h.slice(0,fin_h.indexOf(":"));
-      console.log(fin_h + "-" + fin_m);
-      let c_d = new Date();
-      if(c_d.getHours() > fin_h || (c_d.getMinutes() > fin_m && c_d.getHours() == fin_h)){
-        k = d;
-        if(k > 5){k =0;}
-        console.log(k + " ," + c_d.getHours() + ":" + c_d.getMinutes());
-      }
-      else{
-        k = d-1;
-      }
-      dayshedule[k].style.display = "block";
-      location.href = "#" + d_names[k];
     }
+    var class_menu = {
+      openMenu : function(){
+        document.getElementById("menu-list").classList.toggle("menu-list-show");
+      },
+      closeMenu : function(event){
+        if(document.getElementsByClassName("menu-list-show").length > 0)
+        {
+          if(!(event.target.matches(".list-item") ||
+          event.target.matches(".head-menu-title") ||
+          event.target.parentElement.matches(".head-menu-title")))
+          {
+            document.getElementById("menu-list").classList.toggle("menu-list-show");
+          }
+        }
+      },
+      openChsum:function(){
+        document.getElementById("ext-cont").style.display = "flex";
+        location.href = "#ext-cont";
+        document.getElementById("ext-close").addEventListener("click", function(){
+        document.getElementById("ext-cont").style.display = "none";});
+      }
+    };
+    var checksum = {
+      hex:0x0,
+      dec:0,
+      val:0,
+      sum:0,
+      dechex : function(){
+        checksum.hex = parseInt(document.getElementById("chs-hex").value, 16);
+        checksum.dec = parseInt(document.getElementById("chs-dec").value, 10);
+        if(isNaN(checksum.dec))
+        {
+          if(isNaN(checksum.hex))
+          {
+            document.getElementById("chs-dec").value = 0;
+            document.getElementById("chs-hex").value = 0;
+            return;
+          }
+          else
+          {
+            document.getElementById("chs-dec").value = checksum.hex;
+          }
+        }
+        else
+        {
+          document.getElementById("chs-hex").value = checksum.dec.toString(16);
+          document.getElementById("chs-val").value = checksum.dec.toString(16);
+        }
+      },
+      calcsum : function(){
+        checksum.val = parseInt(document.getElementById("chs-val").value, 16);
+        checksum.sum = parseInt(document.getElementById("chs-sum").value, 16);
+        if(isNaN(checksum.val))
+        {
+          if(!isNaN(checksum.sum))
+          {
+            let idx = [];
+            let t = checksum.genTable(0xfa0da1);
+            let text = 0;
+            let b = 3;
+            for(let i = 0; i < b; i++)
+            {
+              for(let j = 0; j < 256; j++)
+              {
+                if((checksum.sum & 0xFF) == (t[j] & 0xFF))
+                {
+                  idx.push(j);
+                  checksum.sum ^= t[j];
+                  checksum.sum >>= 8;
+                  break;
+                }
+              }
+            }
+            checksum.sum = 0;
+            for(let i = b - 1; i >= 0; i--)
+            {
+              text += (((checksum.sum >> 16) & 0xFF) ^ idx[i]) << (i * 8);
+              checksum.sum = ((checksum.sum << 8)&0xFFFFFF) ^ t[idx[i]];
+            }
+            document.getElementById("chs-dec").value = text;
+            document.getElementById("chs-val").value = text.toString(16);
+            document.getElementById("chs-hex").value = text.toString(16);
+          }
+        }
+        else
+        {
+          let t = checksum.genTable(0xfa0da1);
+          let reg = 0;
+          let s = 0;
+          checksum.val = checksum.divideByBytes(checksum.val, 
+          Math.ceil(parseInt(checksum.val, 16).toString(16).length / 2));
+          for(let i = 0 ; i < checksum.val.length; i++)
+          {
+            reg = ((reg << 8)&0xFFFFFF) ^ t[checksum.val[i] ^ ((reg >> 16) & 0xFF)];
+          }
+          document.getElementById("chs-sum").value = reg.toString(16);
+        }
+        
+      },
+      genTable:function(poly){
+        let W = poly.toString(2).length-1;
+        let crc_table = [];
+        for(let byte = 0; byte < 256; byte++)
+        {
+          let operator = byte << (W-8);
+          let mask = 1 << (W-1);
+          for(let bit = 0; bit < 8; bit++)
+          {
+            if((operator & mask) != 0)
+            {
+              operator <<= 1;
+              operator ^= poly;
+            }
+            else
+            {
+              operator <<= 1;
+            }
+          }
+          crc_table.push(operator);
+        }
+        return crc_table;
+      },
+      divideByBytes:function(v,l){
+        let val = [];
+        for(let pos = l - 1; pos >= 0; pos--)
+        {
+          val.push((v & (0xff << (8*pos))) >> (8*pos));
+        }
+        return val;
+      }
+    }
+    window.addEventListener("load", shedule.setDays);
+    document.getElementById("menu").addEventListener("click", class_menu.openMenu);
+    window.addEventListener("click", class_menu.closeMenu, event);
     document.getElementById("ticket-code").innerHTML="mirea.ru/schedule";
-    for (let i = 0; i<80; i++){
-      let bc = document.createElement("div");
-      bc.style.width = barcodeItemWidth() + "px";
-      document.getElementById("barcode").appendChild(bc);
+    function genBarcode(){
+      for (let i = 0; i<80; i++){
+        let bc = document.createElement("div");
+        bc.style.width = barcodeItemWidth() + "px";
+        document.getElementById("barcode").appendChild(bc);
+      }
     }
     function barcodeItemWidth(){
       const t=3*Math.random();
