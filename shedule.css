@@ -5,6 +5,9 @@
 *{
 	font-family: "GothamPro";
 }
+input:focus-visible {
+    outline: none;
+}
 .iface-centered{
     display:flex;
     align-items:center;
@@ -20,6 +23,7 @@
     top:0;
 }
 .head{
+    user-select: none;
     margin: 10px auto 10px auto;
     padding: 0px 60px;
     display: grid;
@@ -30,17 +34,47 @@
     max-width: 800px;
 }
 .head-menu{
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+.head-menu-title{
     display: grid;
+    height: 40px;
     padding-right: 10px;
     grid-template-columns: 40px auto;
     align-items: center;
     grid-gap: 10px;
 }
-.head-menu:hover{
+.head-menu-list{
+    position: absolute;
+    z-index: 1;
+    display: none;
+    grid-template-rows: repeat(1,1fr);
+    align-items: center;
+    box-shadow:0 1.11vh 2.04vh #fdb101a4;
+}
+.menu-list-show{
+    display: grid;
+}
+.list-item{
+    background-color: #fff;
+    color: #3f1523;
+    text-align: center;
+    padding: 20px;
+    border: none;
+}
+.list-item:hover{
+    background:#ffb200;
+    color:#3f1523;
+	box-shadow:0 1.11vh 2.04vh #fdb10114;
+	transition-duration:.2s
+}
+.head-menu-title:hover{
     background:#ffb200;
 	box-shadow:0 1.11vh 2.04vh #fdb10114;
 	color:#3f1523;
-    border-radius: 10px;
+    /* border-radius: 10px; */
 	transition-duration:.2s
 }
 .head-title{
@@ -101,7 +135,7 @@
     text-decoration: none;
 }
 .shedule-list{
-    margin: 0px;
+    transition: .25s;
 }
 .shedule-value{
     height: 90px;
@@ -124,6 +158,7 @@
     color: #4f182ccc;
     font-weight: 700;
     font-size: 16px;
+    overflow: hidden;
 }
 .ticket-barcode{
     display:flex;
@@ -131,7 +166,7 @@
     padding: 10px 40% 0px 40%;
 }
 .ticket-barcode div{
-    /*background:#4f182ccc;*/
+    background:#4f182ccc;
     background:#4f182c00;
     height:30px
 }
@@ -141,6 +176,110 @@
     text-align:center;
     font-weight:700;
     margin-top:7px
+}
+.ext-container{
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #4b4b4b70;
+}
+.ext-container-close{
+    position: absolute;
+    right: 1vw;
+    top: 1vw;
+    height: 5vw;
+    width: 5vw;
+    border: none;
+    padding: 0px;
+    margin: 0px;
+    background-color: #fff0;
+    /* background-image: url("img/close.png");
+    background-size: contain; */
+}
+.ext-container-close img{
+    height: 5vw;
+    width: 5vw;
+}
+.ext-container-close img:hover{
+    right: 0.5vw;
+    top: 0.5vw;
+    height: 6vw;
+    width: 6vw;
+    transition-duration:.2s
+}
+.chsum{
+    width: 50vh;
+    height: 50vh;
+    margin: auto;
+    background-color: #fff;
+    border-radius: 5vh;
+}
+.chsum-content{
+    display: grid;
+    grid-template-columns: repeat(2,20vh);
+    grid-template-rows: 10vh 5vh;
+    margin: 5vh 5vh;
+    justify-items: center;
+    align-items: center;
+}
+.chsum-data{
+    height: 10vh;
+    overflow: hidden;
+    padding: 1vh;
+    box-sizing: border-box;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-end;
+}
+.chsum-data-val{
+    text-align: center;
+    background: #d1c9cc;
+    border-radius: 1.25vh;
+    border-width: 0px;
+    padding: 0px;
+    height: 5vh;
+    width: 100%;
+    line-height: 5.37vh;
+    color: #3f1523;
+    font-weight: 700;
+    transition-duration: .2s;
+}
+.chsum-data-val:focus-visible{
+    background-color: #3f1523;
+    color: #fff;
+}
+.chsum-data-val::selection{
+    color: #f5be09;
+    text-shadow: none;
+}
+.chsum-data-text{
+    line-height: 1.76vh;
+}
+.chsum-button{
+    display: flex;
+	align-items: center;
+	justify-content: center;
+    grid-column: span 2;
+	height: 4vh;
+    width: 38vh;
+	border-radius: 1vh;
+    border-width: 0px;
+	background-color: #d1c9cc;
+    color: #3f1523;
+	cursor: pointer;
+}
+.chsum-button:hover{
+	background-color: #f5be09;
+    box-shadow:0 .56vh 1.85vh #ffb20040;
+    color: #fff;
+	cursor: pointer;
+	transition-duration: .2s
 }
 @media (max-width: 600px){
   .head{
@@ -158,12 +297,11 @@
   .shedule-day{
     font-size: 10px;
     height: 40px;
-    margin: 0px 70% 0px 10px;
+    margin: 0px 50% 0px 10px;
   }
   .shedule-value{
     height: 60px;
     font-size: 8px;
-    border-bottom: 1px solid #d1c9cc;
     margin: 0px 10px 0px 10px;
   }
   .val_col{
@@ -173,5 +311,11 @@
   }
   .ticket-barcode{
     padding: 10px 20% 0px 20%;
-}
+  }
+  .chsum{
+    font-size: 10px;
+  }
+  .chsum-button{
+    font-size: 10px;
+  }
 }
