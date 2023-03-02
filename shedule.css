@@ -68,14 +68,14 @@ input:focus-visible {
 .list-item:hover{
     background:#ffb200;
     color:#3f1523;
-	box-shadow:0 1.11vh 2.04vh #fdb10114;
-	transition-duration:.2s
+    box-shadow:0 1.11vh 2.04vh #fdb10114;
+    transition-duration:.2s
 }
 .head-menu-title:hover{
     background:#ffb200;
-	box-shadow:0 1.11vh 2.04vh #fdb10114;
-	color:#3f1523;
-	transition-duration:.2s
+    box-shadow:0 1.11vh 2.04vh #fdb10114;
+    color:#3f1523;
+    transition-duration:.2s
 }
 .head-title{
     text-align: center;
@@ -127,7 +127,7 @@ input:focus-visible {
     font-weight: 700;
     font-size: 18px;
     color: #4F182C;
-    border-bottom: 2px solid #d1c9cc;;
+    border-bottom: 2px solid #d1c9cc;
 }
 .shedule-day a{
     color: #4F182C;
@@ -271,23 +271,23 @@ input:focus-visible {
 }
 .chsum-button{
     display: flex;
-	align-items: center;
-	justify-content: center;
+    align-items: center;
+    justify-content: center;
     grid-column: span 2;
-	height: 4vh;
+    height: 4vh;
     width: 38vh;
-	border-radius: 1vh;
+    border-radius: 1vh;
     border-width: 0px;
-	background-color: #d1c9cc;
+    background-color: #d1c9cc;
     color: #3f1523;
-	cursor: pointer;
+    cursor: pointer;
 }
 .chsum-button:hover{
-	background-color: #f5be09;
+    background-color: #f5be09;
     box-shadow:0 .56vh 1.85vh #ffb20040;
     color: #fff;
-	cursor: pointer;
-	transition-duration: .2s
+    cursor: pointer;
+    transition-duration: .2s
 }
 @media (max-width: 600px){
   .head{
@@ -306,11 +306,13 @@ input:focus-visible {
     font-size: 10px;
     height: 40px;
     margin: 0px 50% 0px 10px;
+    border-bottom: 1px solid #d1c9cc;
   }
   .shedule-value{
     height: 60px;
     font-size: 8px;
     margin: 0px 10px 0px 10px;
+    border-bottom: 1px solid #d1c9cc;
   }
   .val_col{
     font-size: 8px;
