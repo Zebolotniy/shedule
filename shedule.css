@@ -196,7 +196,7 @@ input:focus-visible {
     display: flex;
     align-items: center;
     justify-content: center;
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     background-color: #4b4b4b70;
@@ -205,8 +205,8 @@ input:focus-visible {
     position: absolute;
     right: 1vw;
     top: 1vw;
-    height: 5vw;
-    width: 5vw;
+    height: 24px;
+    width: 24px;
     border: none;
     padding: 0px;
     margin: 0px;
@@ -215,11 +215,8 @@ input:focus-visible {
     background-size: cover;
 }
 .ext-container-close:hover{
-    right: 0.5vw;
-    top: 0.5vw;
-    height: 6vw;
-    width: 6vw;
-    transition-duration:.2s
+    opacity: .5;
+    transition-duration:.2s;
 }
 .chsum{
     width: 50vh;
