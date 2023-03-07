@@ -203,8 +203,8 @@ input:focus-visible {
 }
 .ext-container-close{
     position: absolute;
-    right: 1vw;
-    top: 1vw;
+    right: 12px;
+    top: 12px;
     height: 24px;
     width: 24px;
     border: none;
