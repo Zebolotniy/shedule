@@ -207,10 +207,9 @@
           map.s_y =event.clientY;
           map.container.addEventListener("mousemove", map.move);
         }
-        if(event.targetTouches){
+        else if(event.targetTouches){
           map.s_x = event.targetTouches[0].clientX;
-          console.log(event.targetTouches);
-          map.s_y =event.targetTouches[0].clientY;
+          map.s_y = event.targetTouches[0].clientY;
           map.container.addEventListener("touchmove", map.move);
         }
       },
@@ -220,12 +219,12 @@
           map.l_y += event.clientY-map.s_y;
           map.container.removeEventListener("mousemove", map.move);
         }
-        if(event.targetTouches){
+        else if(event.targetTouches){
           if(map.lastMove != null){
-            console.log(map.lastMove);
             map.l_x = map.lastMove.clientX-map.s_x + map.l_x;
             map.l_y += map.lastMove.clientY-map.s_y;
             map.container.removeEventListener("touchmove", map.move);
+            map.lastMove = null;
           }
         }
         if(map.l_x > 0){
@@ -239,8 +238,9 @@
           map.l_y = 0;
         }
         if(map.l_y < -document.querySelector(".bmap").clientHeight + map.phone[1]){
-          map.l_y = -document.querySelector(".bmap").clientHeight + map.phone[1];}
-          map.mapBg.style = "transform: translate(" + map.l_x + "px, " + map.l_y + "px);";
+          map.l_y = -document.querySelector(".bmap").clientHeight + map.phone[1];
+        }
+        map.mapBg.style = "transform: translate(" + map.l_x + "px, " + map.l_y + "px);";
       },
       onResizing:function(){
         map.phone = [map.container.clientWidth, map.container.clientHeight];
