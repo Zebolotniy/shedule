@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Неизвестно</title>
+  <link rel="stylesheet" href="gps.css" />
+</head>
+<body>
+  <div class="gps map iface-container">
+    <div class="gps-phone">
+      <div class="gps-phone__body">
+        <div class="gps-phone__search">
+          <input placeholder="Поиск по навигации...">
+        </div>
+        <div class="gps-phone__to-player">
+          <img src="images/icons/find.png">
+        </div>
+        <div class="gps-places">
+          <div class="gps-places__container">
+            <div id="gpsPlacesHead" class="gps-places__card">
+              <div id="listTitle" class="gps-places__card-text">Развернуть список</div>
+              <img class="arrow" src="images/icons/arrow1.png">
+              <img class="gps-hidden arrow" src="images/icons/arrow2.png">
+            </div>
+            <div class="gps-places__card gps-hidden">
+              <img src="images/icons/focus.png">
+              <div class="gps-places__card-text">Аэропорт Южный</div>
+            </div>
+            <div class="gps-places__card gps-hidden">
+              <img src="images/icons/focus.png">
+              <div class="gps-places__card-text">Вокзал Центральный</div>
+            </div>
+            <div class="gps-places__card gps-hidden">
+              <img src="images/icons/focus.png">
+              <div class="gps-places__card-text">Горнолыжный курорт</div>
+            </div>
+            <div class="gps-places__card gps-hidden">
+              <img src="images/icons/focus.png">
+              <div class="gps-places__card-text">Грузовой порт</div>
+            </div>
+            <div class="gps-places__card gps-hidden">
+              <img src="images/icons/focus.png">
+              <div class="gps-places__card-text">Дом Бабы-Яги</div>
+            </div>
+            <div class="gps-places__card gps-hidden">
+              <img src="images/icons/focus.png">
+              <div class="gps-places__card-text">Ледовая арена</div>
+            </div>
+            <div class="gps-places__card gps-hidden">
+              <img src="images/icons/focus.png">
+              <div class="gps-places__card-text">Маяк</div>
+            </div>
+            <div class="gps-places__card gps-hidden">
+              <img src="images/icons/focus.png">
+              <div class="gps-places__card-text">Парк</div>
+            </div>
+            <div class="gps-places__card gps-hidden">
+              <img src="images/icons/focus.png">
+              <div class="gps-places__card-text">Причал</div>
+            </div>
+            <div class="gps-places__card gps-hidden">
+              <img src="images/icons/focus.png">
+              <div class="gps-places__card-text">Озеро Чистое</div>
+            </div>
+            <div class="gps-places__card gps-hidden">
+              <img src="images/icons/focus.png">
+              <div class="gps-places__card-text">Остров Сердитый</div>
+            </div>
+            <div class="gps-places__card gps-hidden">
+              <img src="images/icons/focus.png">
+              <div class="gps-places__card-text">Электродепо Центральное</div>
+            </div>
+            <div class="gps-places__card gps-hidden">
+              <img src="images/icons/focus.png">
+              <div class="gps-places__card-text">Электродепо Южное</div>
+            </div>
+          </div>
+        </div>
+        <div class="gps-phone__body-container">
+          <div class="bmap">
+            <div style="background-image: url('images/map/3/0/0.png');"></div>
+            <div style="background-image: url('images/map/3/1/0.png');"></div>
+            <div style="background-image: url('images/map/3/2/0.png');"></div>
+            <div style="background-image: url('images/map/3/3/0.png');"></div>
+            <div style="background-image: url('images/map/3/4/0.png');"></div>
+            <div style="background-image: url('images/map/3/5/0.png');"></div>
+            <div style="background-image: url('images/map/3/6/0.png');"></div>
+            <div style="background-image: url('images/map/3/7/0.png');"></div>
+            <div style="background-image: url('images/map/3/0/1.png');"></div>
+            <div style="background-image: url('images/map/3/1/1.png');"></div>
+            <div style="background-image: url('images/map/3/2/1.png');"></div>
+            <div style="background-image: url('images/map/3/3/1.png');"></div>
+            <div style="background-image: url('images/map/3/4/1.png');"></div>
+            <div style="background-image: url('images/map/3/5/1.png');"></div>
+            <div style="background-image: url('images/map/3/6/1.png');"></div>
+            <div style="background-image: url('images/map/3/7/1.png');"></div>
+            <div style="background-image: url('images/map/3/0/2.png');"></div>
+            <div style="background-image: url('images/map/3/1/2.png');"></div>
+            <div style="background-image: url('images/map/3/2/2.png');"></div>
+            <div style="background-image: url('images/map/3/3/2.png');"></div>
+            <div style="background-image: url('images/map/3/4/2.png');"></div>
+            <div style="background-image: url('images/map/3/5/2.png');"></div>
+            <div style="background-image: url('images/map/3/6/2.png');"></div>
+            <div style="background-image: url('images/map/3/7/2.png');"></div>
+            <div style="background-image: url('images/map/3/0/3.png');"></div>
+            <div style="background-image: url('images/map/3/1/3.png');"></div>
+            <div style="background-image: url('images/map/3/2/3.png');"></div>
+            <div style="background-image: url('images/map/3/3/3.png');"></div>
+            <div style="background-image: url('images/map/3/4/3.png');"></div>
+            <div style="background-image: url('images/map/3/5/3.png');"></div>
+            <div style="background-image: url('images/map/3/6/3.png');"></div>
+            <div style="background-image: url('images/map/3/7/3.png');"></div>
+            <div style="background-image: url('images/map/3/0/4.png');"></div>
+            <div style="background-image: url('images/map/3/1/4.png');"></div>
+            <div style="background-image: url('images/map/3/2/4.png');"></div>
+            <div style="background-image: url('images/map/3/3/4.png');"></div>
+            <div style="background-image: url('images/map/3/4/4.png');"></div>
+            <div style="background-image: url('images/map/3/5/4.png');"></div>
+            <div style="background-image: url('images/map/3/6/4.png');"></div>
+            <div style="background-image: url('images/map/3/7/4.png');"></div>
+            <div style="background-image: url('images/map/3/0/5.png');"></div>
+            <div style="background-image: url('images/map/3/1/5.png');"></div>
+            <div style="background-image: url('images/map/3/2/5.png');"></div>
+            <div style="background-image: url('images/map/3/3/5.png');"></div>
+            <div style="background-image: url('images/map/3/4/5.png');"></div>
+            <div style="background-image: url('images/map/3/5/5.png');"></div>
+            <div style="background-image: url('images/map/3/6/5.png');"></div>
+            <div style="background-image: url('images/map/3/7/5.png');"></div>
+            <div style="background-image: url('images/map/3/0/6.png');"></div>
+            <div style="background-image: url('images/map/3/1/6.png');"></div>
+            <div style="background-image: url('images/map/3/2/6.png');"></div>
+            <div style="background-image: url('images/map/3/3/6.png');"></div>
+            <div style="background-image: url('images/map/3/4/6.png');"></div>
+            <div style="background-image: url('images/map/3/5/6.png');"></div>
+            <div style="background-image: url('images/map/3/6/6.png');"></div>
+            <div style="background-image: url('images/map/3/7/6.png');"></div>
+            <div style="background-image: url('images/map/3/0/7.png');"></div>
+            <div style="background-image: url('images/map/3/1/7.png');"></div>
+            <div style="background-image: url('images/map/3/2/7.png');"></div>
+            <div style="background-image: url('images/map/3/3/7.png');"></div>
+            <div style="background-image: url('images/map/3/4/7.png');"></div>
+            <div style="background-image: url('images/map/3/5/7.png');"></div>
+            <div style="background-image: url('images/map/3/6/7.png');"></div>
+            <div style="background-image: url('images/map/3/7/7.png');"></div>
+          </div>
+        </div>
+      </div>
+  </div>
+  <script>
+    let placesList = {
+      names:[
+      "Аэропорт Южный", 
+      "Вокзал Центральный", 
+      "Горнолыжный курорт", 
+      "Грузовой порт", 
+      "Дом Бабы-Яги", 
+      "Ледовая арена", 
+      "Маяк", 
+      "Озеро Чистое", 
+      "Остров Сердитый",
+      "Парк", 
+      "Причал", 
+      "Электродепо Центральное", 
+      "Электродепо Южное",
+      ],
+      titleContent:[
+        "Развернуть список",
+        "Свернуть список"
+      ],
+      titleFirst:true,
+      switchList: function(){
+        let list = document.getElementsByClassName("gps-places__card");
+        let arw = document.getElementsByClassName("arrow");
+        for(let i = 1; i < list.length; i++){
+          list[i].classList.toggle("gps-hidden");
+        }
+        for (let i = 0; i < arw.length; i++){
+          arw[i].classList.toggle("gps-hidden");
+        }
+        if(placesList.titleFirst){
+          document.getElementById("listTitle").innerHTML = placesList.titleContent[1];
+          placesList.titleFirst = false;
+        }
+        else{
+          document.getElementById("listTitle").innerHTML = placesList.titleContent[0];
+          placesList.titleFirst = true;
+        }
+      },
+      turnListOn: function(){
+        document.getElementById("gpsPlacesHead").addEventListener(
+          "click", placesList.switchList);
+      }
+    }
+    let map = {
+      mapBg:null,
+      container:null,
+      lastMove:null,
+      phone:[0,0],
+      l_x: 0,
+      l_y: 0,
+      s_x: 164,
+      s_y: 281,
+      onClkOrTouchDown: function(event){
+        if(event.clientX){
+          map.s_x = event.clientX;
+          map.s_y =event.clientY;
+          map.container.addEventListener("mousemove", map.move);
+        }
+        if(event.targetTouches){
+          map.s_x = event.targetTouches[0].clientX;
+          console.log(event.targetTouches);
+          map.s_y =event.targetTouches[0].clientY;
+          map.container.addEventListener("touchmove", map.move);
+        }
+      },
+      onClkOrTouchUp: function(event){
+        if(event.clientX){
+          map.l_x = event.clientX-map.s_x + map.l_x;
+          map.l_y += event.clientY-map.s_y;
+          map.container.removeEventListener("mousemove", map.move);
+        }
+        if(event.targetTouches){
+          if(map.lastMove != null){
+            console.log(map.lastMove);
+            map.l_x = map.lastMove.clientX-map.s_x + map.l_x;
+            map.l_y += map.lastMove.clientY-map.s_y;
+            map.container.removeEventListener("touchmove", map.move);
+          }
+        }
+        if(map.l_x > 0){
+          map.l_x = 0;
+        }
+        if(map.l_x < -document.querySelector(".bmap").clientWidth + map.phone[0]){
+          map.l_x = -document.querySelector(".bmap").clientWidth + 
+          map.phone[0];
+        }
+        if(map.l_y > 0){
+          map.l_y = 0;
+        }
+        if(map.l_y < -document.querySelector(".bmap").clientHeight + map.phone[1]){
+          map.l_y = -document.querySelector(".bmap").clientHeight + map.phone[1];}
+          map.mapBg.style = "transform: translate(" + map.l_x + "px, " + map.l_y + "px);";
+      },
+      onResizing:function(){
+        map.phone = [map.container.clientWidth, map.container.clientHeight];
+      },
+      move: function (event){
+      if(event.clientX){
+        map.mapBg.style = "transform: translate("+ 
+        (event.clientX - map.s_x + map.l_x)+"px, " 
+        + (event.clientY - map.s_y + map.l_y)+"px);";
+      }
+      if(event.targetTouches){
+        map.lastMove = event.targetTouches[0];
+        map.mapBg.style = "transform: translate("+ 
+        (event.targetTouches[0].clientX- map.s_x+ map.l_x)+"px, " 
+        +(event.targetTouches[0].clientY- map.s_y+ map.l_y)+"px);";
+      }
+    },
+    Init: function(){
+      map.container = document.querySelector(".gps-phone__body-container");
+      map.mapBg = document.querySelector(".bmap");
+      map.phone = [map.container.clientWidth, map.container.clientHeight];
+      map.container.addEventListener("mousedown", map.onClkOrTouchDown, event);
+      map.container.addEventListener("touchstart", map.onClkOrTouchDown, event);
+      map.container.addEventListener("mouseup", map.onClkOrTouchUp, event);
+      map.container.addEventListener("touchend", map.onClkOrTouchUp, event);
+      window.addEventListener("resize", map.onResizing);
+    }
+    }
+
+    window.addEventListener("load", placesList.turnListOn);
+    window.addEventListener("load", map.Init);
+  </script>
+</body>
+</html>
