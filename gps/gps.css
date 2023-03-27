@@ -127,7 +127,7 @@
 	/* border-radius: 10px;  */
 	display: flex; 
 	gap: 1vh;
-	border: 1px solid #0000005e;
+	border: 1px solid #00000033;
     align-items: center;
     justify-content: flex-start;
 	background: #ffffff26; 
@@ -177,6 +177,40 @@
  .gps-close{
 	left:9.58vw!important
 }
+
+.gps-map__point{
+	position: absolute;
+}
+.gps-map__point-img{
+	position: relative;
+	left: -4.5vh;
+	top: -13.5vh;
+	width: 9vh;
+	height: 13.5vh;
+	background-image: url("images/icons/point.png");
+	background-size: cover;
+}
+.gps-map__point-text{
+	position: relative;
+	left: -4.5vh;
+	top: -31vh;
+	height: 4vh;
+	background-color: #272727;
+	color: #fff;
+	text-align: center;
+	font-size: 12px;
+	line-height: 4vh;
+	padding: 0 2vh;
+	border-radius: 1vh;
+}
+.gps-map__point-img img{
+	position: relative;
+	top: 2vh;
+	left: 1.5vh;
+	width: 6vh;
+	height: auto;
+}
+
  .gps-point{
 	text-align:center; 
 	display:flex; 
@@ -300,15 +334,16 @@
 	align-items:center
 }
  .gps-phone__to-player{
-	background:#fff; 
-	position:absolute; 
+	background: #fff;
+	position: absolute;
 	right: 2vh;
 	top: 4vh;
 	z-index: 1;
-	width: 4vh; 
-	height: 4vh; 
-	border-radius: 50%; 
-	transition: .25s
+	width: 4vh;
+	height: 4vh;
+	border: 0;
+	border-radius: 50%;
+	transition: .25s;
 }
  .gps-phone__to-player img{
 	width: 3vh; 
@@ -337,7 +372,7 @@
 	background: #ffffff26; 
 	border: 0; 
 	outline: none; 
-	padding: 0 3vh; 
+	padding: 0 4vh; 
 	height: 6vh; 
 	box-sizing: border-box; 
 	border-radius: 10vh; 
@@ -367,6 +402,23 @@
 	top:0; 
 	opacity:0; 
 	transition-duration:.25s
+}
+.gps-phone__clr{
+	position: absolute;
+	top: 4.5vh;
+	right: 9vh;
+	border: 0;
+	width: unset;
+	height: unset;
+	padding: 0;
+	background: none;
+}
+.gps-phone__clr:hover{
+	opacity: .5;
+}
+.gps-phone__clr img{
+	width: 3vh;
+	height: 3vh;
 }
  .gps-phone__search.active:before{
 	opacity:1; 
@@ -414,7 +466,7 @@
 	.gps-places__container{
 		display: flex;
 		flex-direction: column;
-		max-height: 77vh;
+		max-height: 60vh;
 		margin: 0 4vh;
 		padding: .5vh 0; 
 		overflow-x: unset;
