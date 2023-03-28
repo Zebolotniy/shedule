@@ -4,6 +4,7 @@
 body{
 	overflow: hidden;
 	background-color: #00407d;
+	margin: 0;
 }
 .bmap{
 	height: 2048px;
@@ -23,10 +24,93 @@ body{
 .main-container{
 	width:100vw;
 	height:100vh;
-	position:absolute;
+	overflow:hidden;
+	position:relative;
 	left:0;
 	top:0;
 	user-select:none
+}
+
+.map-body__container{
+	width:100%; 
+	height:100%; 
+	z-index:0
+}
+.map-body__find{
+	display: flex; 
+	justify-content: center; 
+	align-items: center;
+	background: #fff;
+	position: absolute;
+	right: 2vh;
+	top: 4vh;
+	z-index: 1;
+	width: 4vh;
+	height: 4vh;
+	border: 0;
+	border-radius: 50%;
+	transition-duration: .25s;
+}
+.map-body__find:hover{
+	cursor: pointer;
+	box-shadow:0 .74vh 2.96vh #ffffff3d; 
+	transition-duration:.25s
+}
+.map-body__find img{
+	width: 3vh; 
+	height: 3vh
+}
+.map-body__search{
+	position:absolute; 
+	padding:3vh 7vh 0 2vh; 
+	width:100%; 
+	box-sizing:border-box; 
+	z-index:1;
+}
+.map-body__search input{
+	width: 100%; 
+	background: #ffffff26; 
+	border: 0; 
+	outline: none; 
+	padding: 0 4vh; 
+	height: 6vh; 
+	box-sizing: border-box; 
+	border-radius: 10vh; 
+	transition-duration: .25s;
+	font-size: 14px; 
+	line-height: 2vh; 
+	color: #fff;
+}
+.map-body__search input::placeholder{
+	font-size: 14px; 
+	line-height: 2vh; 
+	color: #fff;
+}
+.map-body__search input:focus,.map-body__search input:hover{
+	background:#fff; 
+	box-shadow:0 .74vh 2.96vh #ffffff3d; 
+	transition-duration: .25s;
+}
+.map-body__search input:focus,.map-body__search input:focus::placeholder,.map-body__search input:hover,.map-body__search input:hover::placeholder{
+	color: #272727; 
+	transition-duration: .25s;
+}
+.map-body__clr{
+	position: absolute;
+	top: 4.5vh;
+	right: 9vh;
+	border: 0;
+	width: unset;
+	height: unset;
+	padding: 0;
+	background: none;
+}
+.map-body__clr:hover{
+	opacity: .5;
+}
+.map-body__clr img{
+	width: 3vh;
+	height: 3vh;
 }
 
 .map-point{
@@ -97,13 +181,11 @@ body{
 .map-hidden{
 	display: none;
 }
-.map-places__card.active,.map-places__card:hover{
+.map-places__card:hover{
 	background: #fff; 
-	transition-duration: .25s;
 }
-.map-places__card.active .map-places__card-text,.map-places__card:hover .map-places__card-text{
+.map-places__card:hover .map-places__card-text{
 	color:#272727; 
-	transition-duration:.25s
 }
 .map-places__card-text{
 	font-size: 14px; 
@@ -111,95 +193,9 @@ body{
 	color: #fff; 
 	margin-right: 1vh; 
 	white-space: nowrap; 
-	transition-duration: .25s
+	transition-duration: .25s;
 }
 
-.map-body{
-	width:100%;
-	height:100%;
-	overflow:hidden;
-	position:relative;
-}
-.map-body__container{
-	position:absolute; 
-	transform-origin:center; 
-	width:100%; 
-	height:100%; 
-	z-index:0
-}
-.map-body__find{
-	display: flex; 
-	justify-content: center; 
-	align-items: center;
-	background: #fff;
-	position: absolute;
-	right: 2vh;
-	top: 4vh;
-	z-index: 1;
-	width: 4vh;
-	height: 4vh;
-	border: 0;
-	border-radius: 50%;
-	transition: .25s;
-}
-.map-body__find:hover{
-	cursor: pointer;
-	box-shadow:0 .74vh 2.96vh #ffffff3d; 
-	transition-duration:.25s
-}
-.map-body__find img{
-	width: 3vh; 
-	height: 3vh
-}
-.map-body__search{
-	position:absolute; 
-	padding:3vh 7vh 0 2vh; 
-	width:100%; 
-	box-sizing:border-box; 
-	z-index:1;
-}
-.map-body__search input{
-	width: 100%; 
-	background: #ffffff26; 
-	border: 0; 
-	outline: none; 
-	padding: 0 4vh; 
-	height: 6vh; 
-	box-sizing: border-box; 
-	border-radius: 10vh; 
-	transition-duration: .25s;
-}
-.map-body__search input,.map-body__search input::placeholder{
-	font-size: 14px; 
-	line-height:1.39vh; 
-	color:#fff
-}
-.map-body__search input:focus,.map-body__search input:hover{
-	background:#fff; 
-	box-shadow:0 .74vh 2.96vh #ffffff3d; 
-	transition-duration: .25s;
-}
-.map-body__search input:focus,.map-body__search input:focus::placeholder,.map-body__search input:hover,.map-body__search input:hover::placeholder{
-	color: #272727; 
-	transition-duration: .25s;
-}
-.map-body__clr{
-	position: absolute;
-	top: 4.5vh;
-	right: 9vh;
-	border: 0;
-	width: unset;
-	height: unset;
-	padding: 0;
-	background: none;
-}
-.map-body__clr:hover{
-	opacity: .5;
-}
-.map-body__clr img{
-	width: 3vh;
-	height: 3vh;
-}
 @media (min-width:900px) {
 	.map-places{
 		width: auto;

@@ -114,49 +114,56 @@ let placesList = {
     }
   }
 let map = {
-    mapBg:null,
-    container:null,
-    lastMove:null,
-    isInAnim:false,
-    phone:[0,0],
-    l_x: 0,
-    l_y: 0,
-    s_x: 164,
-    s_y: 281,
-    onClkOrTouchDown: function(event){
-      if(event.clientX){
-        map.s_x = event.clientX;
-        map.s_y = event.clientY;
-        map.container.addEventListener("mousemove", map.move);
+  mapBg:null,
+  container:null,
+  lastMove:null,
+  isInAnim:false,
+  phone:[0,0],
+  l_x: 0,
+  l_y: 0,
+  s_x: 164,
+  s_y: 281,
+  onClkOrTouchDown: function(event){
+    if(event.clientX){
+      map.s_x = event.clientX;
+      map.s_y = event.clientY;
+      map.container.addEventListener("mousemove", map.move);
+    }
+    else if(event.targetTouches){
+      map.s_x = event.targetTouches[0].clientX;
+      map.s_y = event.targetTouches[0].clientY;
+      map.container.addEventListener("touchmove", map.move);
+    }
+  },
+  onClkOrTouchUp: function(event){
+    if(event.clientX){
+      map.l_x = event.clientX - map.s_x + map.l_x;
+      map.l_y += event.clientY - map.s_y;
+      map.container.removeEventListener("mousemove", map.move);
+    }
+    else if(event.targetTouches){
+      if(map.lastMove != null){
+        map.l_x = map.lastMove.clientX - map.s_x + map.l_x;
+        map.l_y += map.lastMove.clientY - map.s_y;
+        map.container.removeEventListener("touchmove", map.move);
+        map.lastMove = null;
       }
-      else if(event.targetTouches){
-        map.s_x = event.targetTouches[0].clientX;
-        map.s_y = event.targetTouches[0].clientY;
-        map.container.addEventListener("touchmove", map.move);
-      }
-    },
-    onClkOrTouchUp: function(event){
-      if(event.clientX){
-        map.l_x = event.clientX - map.s_x + map.l_x;
-        map.l_y += event.clientY - map.s_y;
-        map.container.removeEventListener("mousemove", map.move);
-      }
-      else if(event.targetTouches){
-        if(map.lastMove != null){
-          map.l_x = map.lastMove.clientX - map.s_x + map.l_x;
-          map.l_y += map.lastMove.clientY - map.s_y;
-          map.container.removeEventListener("touchmove", map.move);
-          map.lastMove = null;
-        }
-      }
-      // console.log("X:"+ event.clientX + " - " + map.l_x + " = " + (event.clientX - map.l_x));
-      // console.log("Y:"+ event.clientY + " - " + map.l_y + " = " + (event.clientY - map.l_y));
-      map.checkBorder();
-    },
-    onResizing:function(){
-      map.phone = [map.container.clientWidth, map.container.clientHeight];
-    },
-    move: function (event){
+    }
+    // console.log("X:"+ event.clientX + " - " + map.l_x + " = " + (event.clientX - map.l_x));
+    // console.log("Y:"+ event.clientY + " - " + map.l_y + " = " + (event.clientY - map.l_y));
+    map.checkBorder();
+    map.container.removeEventListener("mouseout", map.onOut);
+  },
+  finalOnClkUp:function(event){
+    map.checkBorder();
+    map.container.addEventListener("mouseup", map.onClkOrTouchUp);
+    map.container.removeEventListener("mouseout", map.onOut);
+    document.removeEventListener("mouseup", map.finalOnClkUp);
+  },
+  onResizing:function(){
+    map.phone = [map.container.clientWidth, map.container.clientHeight];
+  },
+  move: function (event){
     if(event.clientX){
       map.mapBg.style = "transform: translate("+ 
       (event.clientX - map.s_x + map.l_x)+"px, " 
@@ -220,7 +227,6 @@ let map = {
         (map.l_y - delta_y * progress) + "px);";
       }
     });
-    // map.mapBg.style = "transform: translate(" + map.l_x + "px, " + map.l_y + "px);";
   },
   animate: function({duration, draw, timing}) {
     let start = performance.now();
@@ -242,10 +248,15 @@ let map = {
     map.container = document.querySelector(".map-body__container");
     map.mapBg = document.querySelector(".bmap");
     map.phone = [map.container.clientWidth, map.container.clientHeight];
-    map.container.addEventListener("mousedown", map.onClkOrTouchDown, event);
-    map.container.addEventListener("touchstart", map.onClkOrTouchDown, event);
-    map.container.addEventListener("mouseup", map.onClkOrTouchUp, event);
-    map.container.addEventListener("touchend", map.onClkOrTouchUp, event);
+    if(map.mapBg != null && map.phone != null){
+      map.l_x = -1024 + map.phone[0] / 2;
+      map.l_y = -1024 + map.phone[1] / 2;
+      map.mapBg.style = "transform: translate( " + map.l_x + "px, " + map.l_y + "px);";
+    }
+    map.container.addEventListener("mousedown", map.onClkOrTouchDown);
+    map.container.addEventListener("touchstart", map.onClkOrTouchDown);
+    map.container.addEventListener("mouseup", map.onClkOrTouchUp);
+    map.container.addEventListener("touchend", map.onClkOrTouchUp);
     window.addEventListener("resize", map.onResizing);
   }
 }
