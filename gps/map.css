@@ -40,36 +40,37 @@ body{
 	display: flex; 
 	justify-content: center; 
 	align-items: center;
-	background: #fff;
+	background: #000000a6;
 	position: absolute;
 	right: 2vh;
-	top: 4vh;
+	top: 3vh;
 	z-index: 1;
-	width: 4vh;
-	height: 4vh;
+	width: 6vh;
+	height: 6vh;
 	border: 0;
 	border-radius: 50%;
 	transition-duration: .25s;
 }
 .map-body__find:hover{
 	cursor: pointer;
+	background:#fff; 
 	box-shadow:0 .74vh 2.96vh #ffffff3d; 
 	transition-duration:.25s
 }
 .map-body__find img{
-	width: 3vh; 
-	height: 3vh
+	width: 4vh; 
+	height: 4vh
 }
 .map-body__search{
 	position:absolute; 
-	padding:3vh 7vh 0 2vh; 
+	padding:3vh 9vh 0 2vh; 
 	width:100%; 
 	box-sizing:border-box; 
 	z-index:1;
 }
 .map-body__search input{
 	width: 100%; 
-	background: #ffffff26; 
+	background: #000000a6;
 	border: 0; 
 	outline: none; 
 	padding: 0 4vh; 
@@ -98,7 +99,7 @@ body{
 .map-body__clr{
 	position: absolute;
 	top: 4.5vh;
-	right: 9vh;
+	right: 12vh;
 	border: 0;
 	width: unset;
 	height: unset;
@@ -165,16 +166,21 @@ body{
 	padding:.5vh 2vh;
 	display: flex;
 	gap: 1vh;
-	border: 1px solid #00000033;
-    align-items: center;
-    justify-content: flex-start;
-	background: #ffffff26;
+	border: 1px solid #000;
+	align-items: center;
+	justify-content: flex-start;
+	background-color: #000000a6;
 	transition-duration: .25s;
 	cursor: pointer;
+}
+.map-places-lsthd{
+	border-radius: 4vh;
+	border-color: #0000;
 }
 #mapPlacesHead{
 	justify-content: space-between;
 }
+
 .map-places__card img{
 	max-height: 6vh;
 }
@@ -211,6 +217,9 @@ body{
 		overflow-y: overlay;
 	}
 	 .map-body__search{
-		padding:3vh 8vh 0 4vh; 
+		padding:3vh 11vh 0 4vh; 
+	}
+	 .map-body__find{
+		right: 4vh;
 	}
 }
