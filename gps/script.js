@@ -1,43 +1,127 @@
 let placesList = {
-  names:[
-  "аэропорт южный", 
-  "вокзал центральный", 
-  "горнолыжный курорт", 
-  "грузовой порт", 
-  "дом бабы-яги", 
-  "живописный мост", 
-  "ледовая арена", 
-  "маяк", 
-  "озеро чистое", 
-  "остров сердитый",
-  "парк", 
-  "причал", 
-  "электродепо центральное", 
-  "электродепо южное",
+  places:[
+    {
+        name : "аэропорт южный",
+        coords : {
+            x : 1504,
+            y : 1358
+        },
+        icon : "images/objs/airport.png"
+    },
+    {
+        "name" : "вокзал центральный",
+        coords : {
+            x : 1169,
+            y : 928
+        },
+        icon : "images/objs/railway.png"
+    },
+    {
+        "name" : "горнолыжный курорт",
+        coords : {
+            x : 756,
+            y : 862
+        },
+        icon : "images/objs/ski.png"
+    },
+    {
+        "name" : "грузовой порт",
+        coords : {
+            x : 698,
+            y : 529
+        },
+        icon : "images/objs/port.png"
+    },
+    {
+        "name" : "дом бабы-яги",
+        coords : {
+            x : 1367,
+            y : 1455
+        },
+        icon : "images/objs/bayaga.png"
+    },
+    {
+        "name" : "живописный мост",
+        coords : {
+            x : 576,
+            y : 859
+        },
+        icon : "images/objs/bridge.png"
+    },
+    {
+        "name" : "ледовая арена",
+        coords : {
+            x : 995,
+            y : 961
+        },
+        icon : "images/objs/stadium.png"
+    },
+    {
+        "name" : "маяк",
+        coords : {
+            x : 1025,
+            y : 1528
+        },
+        icon : "images/objs/mayak.png"
+    },
+    {
+        "name" : "озеро чистое",
+        coords : {
+            x : 975,
+            y : 638
+        },
+        icon : "images/objs/lake.png"
+    },
+    {
+        "name" : "остров сердитый",
+        coords : {
+            x : 1603,
+            y : 413
+        },
+        icon : "images/objs/land.png"
+    },
+    {
+        "name" : "парк",
+        coords : {
+            x : 1020,
+            y : 899
+        },
+        icon : "images/objs/park.png"
+    },
+    {
+        "name" : "причал",
+        coords : {
+            x : 1069,
+            y : 1067
+        },
+        icon : "images/objs/prichal.png"
+    },
+    {
+        "name" : "электродепо центральное",
+        coords : {
+            x : 949,
+            y : 965
+        },
+        icon : "images/objs/trainc.png"
+    },
+    {
+        "name" : "электродепо южное",
+        coords : {
+            x : 1366,
+            y : 1481
+        },
+        icon : "images/objs/trainy.png"
+    }
   ],
   point:null,
-  points:[
-    {x:1504, y:1358, url:"images/objs/airport.png"},
-    {x:1169, y:928, url:"images/objs/railway.png"},
-    {x:756, y:862, url:"images/objs/ski.png"},
-    {x:698, y:529, url:"images/objs/port.png"},
-    {x:1367, y:1455, url:"images/objs/bayaga.png"},
-    {x:576, y:859, url:"images/objs/bridge.png"},
-    {x:995, y:961, url:"images/objs/stadium.png"},
-    {x:1025, y:1528, url:"images/objs/mayak.png"},
-    {x:975, y:638, url:"images/objs/lake.png"},
-    {x:1603, y:413, url:"images/objs/land.png"},
-    {x:1020, y:899, url:"images/objs/park.png"},
-    {x:1069, y:1067, url:"images/objs/prichal.png"},
-    {x:949, y:965, url:"images/objs/trainc.png"},
-    {x:1366, y:1481, url:"images/objs/trainy.png"}
-  ],
   titleContent:[
     "Развернуть список",
     "Свернуть список"
   ],
   listClosed:true,
   list:null,
+  menu : null,
+  m_points : null,
   switchList: function(){
     if(placesList.list == null){return;}
     for(let i = 1; i < placesList.list.length; i++){
@@ -71,28 +155,20 @@ let placesList = {
     }
     placesList.listClosed = !placesList.listClosed;
   },
-  turnListOn: function(){
-    document.getElementById("mapPlacesHead").addEventListener("click", placesList.switchList);
-    placesList.list = document.getElementsByClassName("map-places__card");
-    placesList.point = document.getElementById("point");
-    for(let i = 1; i < placesList.list.length; i++){
-      placesList.list[i].addEventListener("click", placesList.toPoint, false);
-      placesList.list[i].param = i - 1;
-    }
-  },
   toPoint: function(event){
     if(event.currentTarget.param != undefined){
       let p = event.currentTarget.param;
-      placesList.point.style = "transform: translate(" + placesList.points[p].x + "px, " + placesList.points[p].y + "px);" + "z-index:2";
+      let off = map.scrSize[1]*0.175;
+      placesList.point.style = "transform: translate(" + placesList.places[p].coords.x + "px, " + (placesList.places[p].coords.y - off) + "px);" + "z-index:2";
     if(placesList.point.firstChild != undefined){
       document.getElementById("pointimg").src = 
-      placesList.points[p].url;
+      placesList.places[p].icon;
     }
     if(map != null){
-      map.moveToCoords([placesList.points[p].x, 
-      placesList.points[p].y]);
+      map.moveToCoords([placesList.places[p].coords.x, 
+      placesList.places[p].coords.y]);
     }
-    document.getElementById("pointtext").innerHTML = placesList.names[p].toUpperCase();
+    document.getElementById("pointtext").innerHTML = placesList.places[p].name.toUpperCase();
     }
   },
   findPlace: function(){
@@ -101,8 +177,8 @@ let placesList = {
     if(ask.split(' ').join('') == ''){
       return;
     }
-    for (let i = 0; i < placesList.names.length; i++){
-      if(placesList.names[i].includes(ask.toLowerCase())){
+    for (let i = 0; i < placesList.places.length; i++){
+      if(placesList.places[i].name.includes(ask.toLowerCase())){
           if(placesList.list[i + 1].classList.contains("map-hidden"))
           {
             placesList.list[i + 1].classList.toggle("map-hidden");
@@ -125,9 +201,43 @@ let placesList = {
   },
   clearSearch: function(){
     document.getElementById("search").value = "";
+  },
+  openMenu : function(){
+    if(placesList.menu != null && placesList.menu.classList.contains("map-hidden")){
+      placesList.menu.classList.toggle("map-hidden");
+    }
+  },
+  closeMenu : function(){
+    if(placesList.menu != null && !placesList.menu.classList.contains("map-hidden")){
+      placesList.menu.classList.toggle("map-hidden");
+    }
+  },
+  resetPoint : function(){
+    placesList.point.style = "top: 20vh; left: 10vh; z-index:-1";
+  },
+  turnListOn: function(){
+    document.getElementById("mapPlacesHead").addEventListener("click", placesList.switchList);
+    placesList.list = document.getElementsByClassName("map-places__card");
+    placesList.m_points = document.getElementsByClassName("map-point-d");
+    placesList.point = document.getElementById("point");
+    if(placesList.point){
+      placesList.point.addEventListener("click", placesList.resetPoint, false);
+    }
+    for(let i = 1; i < placesList.list.length; i++){
+      placesList.list[i].addEventListener("click", placesList.toPoint, false);
+      placesList.list[i].param = i - 1;
+    }
+    if(placesList.list.length - 1 == placesList.m_points.length){
+      for(let i = 0; i < placesList.m_points.length; i++){
+        placesList.m_points[i].addEventListener("click", placesList.toPoint, false);
+        placesList.m_points[i].param = i;
+      }
+    }
+    placesList.menu = document.querySelector(".map-body__menu-cntnt");
   }
 }
 let map = {
+  menu:null,
   mapBg:null,
   container:null,
   lastMove:null,
@@ -140,15 +250,24 @@ let map = {
     if(event.clientX){
       map.s_x = event.clientX;
       map.s_y = event.clientY;
+      if(!event.target.classList.contains("map-img")){
+        return;
+      }
       map.container.addEventListener("mousemove", map.move);
     }
     else if(event.targetTouches){
       map.s_x = event.targetTouches[0].clientX;
       map.s_y = event.targetTouches[0].clientY;
+      if(!event.target.classList.contains("map-img")){
+        return;
+      }
       map.container.addEventListener("touchmove", map.move);
     }
   },
   onClkOrTouchUp: function(event){
+    if(!event.target.classList.contains("map-img")){
+      return;
+    }
     if(event.clientX){
       map.l_x = event.clientX - map.s_x + map.l_x;
       map.l_y += event.clientY - map.s_y;
@@ -263,8 +382,20 @@ let map = {
     map.container.addEventListener("mouseup", map.onClkOrTouchUp);
     map.container.addEventListener("touchend", map.onClkOrTouchUp);
     window.addEventListener("resize", map.onResizing);
+    map.menu = document.querySelector(".map-body__menu-cntnt");
+  },
+  openMenu : function(){
+    if(map.menu != null && map.menu.classList.contains("map-hidden")){
+      map.menu.classList.toggle("map-hidden");
+    }
+  },
+  closeMenu : function(){
+    if(map.menu != null && !map.menu.classList.contains("map-hidden")){
+      map.menu.classList.toggle("map-hidden");
+    }
   }
 }
+
 
 window.addEventListener("load", placesList.turnListOn);
 window.addEventListener("load", map.Init);
