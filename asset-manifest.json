@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/shedule/static/css/main.0c94d06e.css",
+    "main.js": "/shedule/static/js/main.bdc74614.js",
+    "static/media/GothamPro.14d5b651.ttf": "/shedule/static/media/GothamPro.14d5b651.5621452fe07fa8209824.ttf",
+    "index.html": "/shedule/index.html",
+    "main.0c94d06e.css.map": "/shedule/static/css/main.0c94d06e.css.map",
+    "main.bdc74614.js.map": "/shedule/static/js/main.bdc74614.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.0c94d06e.css",
+    "static/js/main.bdc74614.js"
+  ]
+}
